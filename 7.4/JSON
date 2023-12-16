@@ -1,0 +1,39 @@
+#include <vector>
+#include <iostream>
+ 
+class Serializer {
+public:
+    virtual void BeginArray() = 0;  // Виртуальная функция для начала массива
+    virtual void AddArrayItem(const std::string &s) = 0;  // Виртуальная функция для добавления элемента в массив
+    virtual void EndArray() = 0;  // Виртуальная функция для завершения массива
+    virtual ~Serializer() {}  // Виртуальный деструктор
+};
+ 
+class JsonSerializer : public Serializer {
+public:
+    void BeginArray() override {
+        if (!isFirst) {  // Проверяем, является ли данный массив первым в иерархии массивов
+            std::cout << ",[";  // Если нет, то добавляем запятую и открывающую скобку
+        } else {
+            std::cout << "[";  // Если да, то просто открываем скобку
+        }
+ 
+        isFirst = true;  // Устанавливаем флаг первого элемента в массиве
+    }
+ 
+    void AddArrayItem(const std::string& str) override {
+        if (!isFirst) {  // Проверяем, является ли данный элемент первым в массиве
+            std::cout << ",";  // Если нет, то добавляем запятую
+        }
+        std::cout << "\"" << str << "\"";  // Выводим элемент в двойных кавычках
+        isFirst = false;  // Сбрасываем флаг первого элемента
+    }
+ 
+    void EndArray() override {
+        std::cout << "]";  // Закрываем массив
+        isFirst = false;  // Сбрасываем флаг первого элемента
+    }
+ 
+private:
+    bool isFirst = true;  // Флаг для отслеживания первого элемента массива
+};
