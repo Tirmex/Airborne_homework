@@ -1,0 +1,26 @@
+#include <cstdint> 
+#include <vector> 
+ 
+template <typename T> // объявление шаблонного класса AdvancedVector
+class AdvancedVector: public std::vector<T> { // наследование от std::vector
+public:
+    AdvancedVector() = default; // конструктор по умолчанию
+ 
+    template <typename Iter>
+    AdvancedVector(Iter first, Iter last): std::vector<T>(first, last) { // конструктор с параметрами, инициализирующий базовый класс std::vector
+    }
+ 
+    const T& operator [](long long int i) const { // перегрузка оператора [] для доступа к элементам вектора (константная версия)
+        if (i < 0) { // если индекс отрицательный
+            i += this->size(); // добавляем размер вектора к индексу
+        }
+        return this->at(i); // возвращаем элемент вектора по индексу
+    }
+ 
+    T& operator [](long long int i) { // перегрузка оператора [] для доступа к элементам вектора
+        if (i < 0) { // если индекс отрицательный
+            i += this->size(); // добавляем размер вектора к индексу
+        }
+        return this->at(i); // возвращаем элемент вектора по индексу
+    }
+};
