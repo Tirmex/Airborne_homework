@@ -1,0 +1,16 @@
+#include <vector>
+
+std::vector<std::vector<int>> Transpose(const std::vector<std::vector<int>>& matrix) {
+    int n = matrix.size();
+    int m = matrix[0].size();
+    
+    std::vector<std::vector<int>> transpose(m, std::vector<int>(n, 0));
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+    
+    return transpose;
+}
