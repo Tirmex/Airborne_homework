@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <utility>
+
+std::pair<size_t, size_t> MatrixArgMax(const std::vector<std::vector<int>>& matrix) {
+    int max_element = matrix[0][0];
+    std::pair<size_t, size_t> max_index = std::make_pair(0, 0);
+
+    for (size_t i = 0; i < matrix.size(); ++i) {
+        for (size_t j = 0; j < matrix[i].size(); ++j) {
+            if (matrix[i][j] > max_element) {
+                max_element = matrix[i][j];
+                max_index = std::make_pair(i, j);
+            }
+        }
+    }
+
+    return max_index;
+}
