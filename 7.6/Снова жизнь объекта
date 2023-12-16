@@ -1,0 +1,10 @@
+class B : public A
+{
+private:
+	std::unique_ptr<A> x = nullptr;
+
+public:
+	B():A(42) {
+		x = std::make_unique<A>(17);
+	};
+};
