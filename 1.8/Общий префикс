@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+std::string CommonPrefix(const std::vector<std::string>& words) {
+    if (words.empty()) {
+        return ""; // возвращаем пустую строку для пустого вектора
+    }
+
+    std::string prefix = words[0]; // начинаем с первого слова
+    for (const std::string& word : words) {
+        size_t len = std::min(prefix.size(), word.size());
+        size_t i = 0;
+        while (i < len && prefix[i] == word[i]) {
+            i++;
+        }
+        prefix = prefix.substr(0, i); // обрезаем префикс до общей части
+    }
+
+    return prefix;
+}
