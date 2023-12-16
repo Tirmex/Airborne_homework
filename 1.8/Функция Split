@@ -1,1 +1,17 @@
+#include <vector>
+#include <string>
 
+std::vector<std::string> Split(const std::string& str, char delimiter) {
+    std::vector<std::string> result;
+    std::string token;
+    for (char c : str) {
+        if (c == delimiter) {
+            result.push_back(token);
+            token = "";
+        } else {
+            token += c;
+        }
+    }
+    result.push_back(token); // добавляем последний токен после разделителя
+    return result;
+}
