@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+std::string Join(const std::vector<std::string>& tokens, char delimiter){
+    std::string result;
+    
+    if (tokens.empty()) {
+        return result; 
+    }
+    for (size_t i = 0; i < tokens.size(); i++){
+        if (i != tokens.size() - 1){
+          result += tokens[i] + delimiter;
+        } else{
+            result += tokens[i];
+        }
+    }
+    return result;
+}
