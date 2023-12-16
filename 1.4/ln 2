@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+ 
+int main() {
+    int n;
+    double res = 0.0;
+    double sign = 1;
+    
+    cin >> n;
+     for (int i = 1; i <= n; i++){
+         res+= sign/i;
+         sign = -sign;
+     }
+  
+
+    cout << res;
+}
