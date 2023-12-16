@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m, k;
+    cin >> n >> m >> k;
+
+    vector<vector<int>> grid(n, vector<int>(m, 0));
+
+    for (int i = 0; i < k; i++) {
+        int x, y;
+        cin >> x >> y;
+        grid[x-1][y-1] = -1; // Set the cell with a mine to -1
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                if (x-1+dx >= 0 && x-1+dx < n && y-1+dy >= 0 && y-1+dy < m) {
+                    if (grid[x-1+dx][y-1+dy] != -1) {
+                        grid[x-1+dx][y-1+dy]++;
+                    }
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (grid[i][j] == -1) {
+                cout << "* ";
+            } else {
+                cout << grid[i][j] << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
