@@ -1,0 +1,13 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+template <typename T>
+void Duplicate(vector<T>& v) {
+    size_t lenta = v.size();
+    for (size_t it = 0; it < lenta; ++it) {
+        v.push_back(v[it]);
+    }
+}
