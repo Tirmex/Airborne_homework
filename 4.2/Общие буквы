@@ -1,0 +1,30 @@
+#include <map>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::map <char, int> letters;
+    std::string word;
+    int num = 0;
+    
+    while (std::cin >> word) {
+        num++;
+        std::map <char, bool> usedLetters;
+        for (char c: word) {
+            if (!usedLetters[c]) {
+                letters[c]++;
+                usedLetters[c] = true;
+            }
+        }
+    }
+    
+    for (auto& pair : letters) {
+        if (pair.second == num) {
+            std::cout << pair.first;
+        }
+    }
+    
+    
+    return 0;
+}
