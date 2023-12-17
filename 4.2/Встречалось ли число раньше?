@@ -1,0 +1,18 @@
+#include <iostream>
+#include <map>
+
+int main() {
+    std::map<int, bool> numbers;
+    int num;
+
+    while (std::cin >> num) {
+        if (numbers.count(num)) {
+            std::cout << "YES\n";
+        } else {
+            std::cout << "NO\n";
+            numbers[num] = true;
+        }
+    }
+
+    return 0;
+}
