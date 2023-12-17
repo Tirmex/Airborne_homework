@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int f0 = 0, f1 = 1;
+    int n;
+    cin >> n;
+    switch(n) {
+        case 0:
+            cout << f0 << endl;
+            break;
+        case 1:
+            cout << f1 << endl;
+            break;
+        default:
+            int fib = 0;
+            for (int count = 2; count < n + 1; ++count){
+                fib = (f0 + f1) % 10;
+                f0 = f1;
+                f1 = fib;
+            }
+            cout << fib << endl;
+            break;
+    }
+
+    return 0;
+}
